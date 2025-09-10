@@ -84,7 +84,7 @@ See [evaluation/README.md](evaluation/README.md) for full instructions, environm
 ### Static Benchmarks
 - **29 benchmarks** across Basque, English, and Spanish
 - **6 categories**: reading comprehension, common sense, linguistic proficiency, knowledge, math & reasoning, and bias
-- Automated evaluation using [LM Evaluation Harness](https://github.com/juletx/lm-evaluation-harness/tree/basque-bench)
+- Automated evaluation using our fork of [LM Evaluation Harness](https://github.com/juletx/lm-evaluation-harness/tree/basque-bench)
 - Full configuration files and results included
 
 ### Human Evaluation: _Ebaluatoia_ arena
