@@ -1,3 +1,34 @@
+# Māori data (this fork)
+
+The 17 `train_configs/exp_*_fixed.yaml` files keep HiTZ's grid (`exp_<backbone>_<translated><english><corpus>`)
+and `~/work_dir` layout, retargeted to te reo Māori. Two kinds of path appear:
+
+**Ready — pretraining corpus.** The 12 `Maori_<source>_train.jsonl` files come from the private HF dataset
+[`lucafossen/maori-corpus-v1`](https://huggingface.co/datasets/lucafossen/maori-corpus-v1) (corpus_version
+`e0b93d48510e`; same layout/schema as `HiTZ/latxa-corpus-v1.1`, `{"text": ...}` records):
+
+```bash
+hf download --repo-type dataset lucafossen/maori-corpus-v1 --local-dir ~/work_dir/_dl/maori-corpus-v1
+mkdir -p ~/work_dir/datasets/PretrainDatasets
+for d in ~/work_dir/_dl/maori-corpus-v1/*/; do s=$(basename "$d");
+  cp "$d/train.jsonl" ~/work_dir/datasets/PretrainDatasets/Maori_${s}_train.jsonl; done
+```
+
+`<source>/valid.jsonl` (7,831 docs across sources) is the held-out validation set; it is never listed under
+`datasets:`.
+
+**Placeholders — fill in before launching** (grep `TODO`):
+
+| placeholder | what goes there |
+|---|---|
+| `~/work_dir/BaseModels/Maori3.1_8b` | the Māori base model (Llama-3.1-8B continued-pretrained on the corpus above); `exp_1_*` cells |
+| `InstructDatasets/TODO_MAORI_TRANSLATED_INSTRUCTIONS.jsonl` | Magpie instructions translated to Māori by `magpie/run_translation.sh` with the Māori prompt; `exp_*_1??` cells |
+| `InstructDatasets/TODO_MAORI_INSTRUCT_VAL.jsonl` | held-out Māori instruction set for `test_datasets` (AYA has no Māori subset; candidate: maori-magpie `instruct_mi_val.jsonl`, 1,000 rows) |
+| `~/work_dir/TODO_PROJECT_models/`, `wandb_project: TODO_PROJECT`, `wandb_entity: TODO_WANDB_ENTITY` | run naming |
+
+The English Magpie instruction sets and `Magpie-Ultra-1K` are unchanged from the Basque configs.
+`train_scripts/*.sh` still reference `~/latxa-instruct/...` and HiTZ's venv; adjust to the checkout path.
+
 # Model Training in Leonardo
 ### Iker García (Last Update: Dec 31, 2024)
 
