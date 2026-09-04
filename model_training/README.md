@@ -4,11 +4,11 @@ The 17 `train_configs/exp_*_fixed.yaml` files keep HiTZ's grid (`exp_<backbone>_
 and `~/work_dir` layout, retargeted to te reo Māori. Two kinds of path appear:
 
 **Ready — pretraining corpus.** The 12 `Maori_<source>_train.jsonl` files come from the private HF dataset
-[`lucafossen/maori-corpus-v1`](https://huggingface.co/datasets/lucafossen/maori-corpus-v1) (corpus_version
+[`maori-lm/maori-corpus-v1`](https://huggingface.co/datasets/maori-lm/maori-corpus-v1) (corpus_version
 `e0b93d48510e`; same layout/schema as `HiTZ/latxa-corpus-v1.1`, `{"text": ...}` records):
 
 ```bash
-hf download --repo-type dataset lucafossen/maori-corpus-v1 --local-dir ~/work_dir/_dl/maori-corpus-v1
+hf download --repo-type dataset maori-lm/maori-corpus-v1 --local-dir ~/work_dir/_dl/maori-corpus-v1
 mkdir -p ~/work_dir/datasets/PretrainDatasets
 for d in ~/work_dir/_dl/maori-corpus-v1/*/; do s=$(basename "$d");
   cp "$d/train.jsonl" ~/work_dir/datasets/PretrainDatasets/Maori_${s}_train.jsonl; done

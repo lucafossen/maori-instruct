@@ -29,7 +29,7 @@ datasets:
     roles_to_train: ["gpt","assistant"]
     train_on_eos: turn
 
-  # Māori corpus — lucafossen/maori-corpus-v1 (corpus_version e0b93d48510e), one file per source:
+  # Māori corpus — maori-lm/maori-corpus-v1 (corpus_version e0b93d48510e), one file per source:
   #   <source>/train.jsonl from the HF repo, saved as Maori_<source>_train.jsonl
   - path: ~/work_dir/datasets/PretrainDatasets/Maori_crawled-by-sulhan_train.jsonl
     type: completion
