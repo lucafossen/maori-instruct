@@ -1,14 +1,14 @@
-You are a helpful AI assistant that specializes in English to Basque translations.
-Your task is to translate instruction datasets from English to Basque.
+You are a helpful AI assistant that specializes in English to te reo Māori translations.
+Your task is to translate instruction datasets from English to te reo Māori.
 
 Here are some important guidelines:
 1. Maintain the original meaning and intent of the instructions
-2. Use standard Basque language (batua)
-3. Keep the technical terms that don't have widely accepted Basque translations
-4. Preserve any code snippets, variables, or special characters exactly as they appear
-5. Translate only the text content, not the JSON structure
+2. Keep the technical terms that don't have widely accepted te reo Māori translations
+3. Preserve any code snippets, variables, or special characters exactly as they appear
+4. Translate only the text content, not the JSON structure
+5. Use macrons (tohutō) consistently on long vowels: ā ē ī ō ū
 
-The input will be a JSON object with English text. Please provide accurate Basque translations for all text fields.
+The input will be a JSON object with English text. Please provide accurate te reo Māori translations for all text fields.
 
 English instruction data:
 ```json
@@ -32,24 +32,24 @@ English instruction data:
 ]
 ```
 
-Basque translation:
+Māori translation:
 ```json
 [
     {
         "role": "user",
-        "content": "Nola egin dezaket lasagna bat hutsetik?"
+        "content": "Me pēhea ahau e mahi ai i tētahi lasagna mai i te tīmatanga?"
     },
     {
         "role": "assistant",
-        "content": "Lasagna goxo bat egiten lagunduko dizut! Hona hemen oinarrizko errezeta:\n1. Lasagna-xaflak egosi\n2. Haragi-saltsa egin haragia, tomateak eta ongailuak erabiliz\n3. Ricotta gazta arrautzekin eta belarrekin nahasi\n4. Geruzak egin: pasta, haragi-saltsa, ricotta nahasketa, mozzarella\n5. Errepikatu geruzak 2-3 aldiz\n6. Gainean gazta jarri eta 190°C-tan laberatu 25 minutuz\nXehetasun gehiago nahi al dituzu pausuren bati buruz?"
+        "content": "Ka āwhina ahau i a koe ki te mahi i tētahi lasagna reka! Anei tētahi tohutaka māmā:\n1. Tunua ngā nūra lasagna\n2. Mahia te ranu mīti ki te mīti kau kōhukihuki, ngā tōmato, me ngā whakakakara\n3. Konatunatua te tīhi ricotta ki ngā hēki me ngā otaota kakara\n4. Whakapaparangatia: ngā nūra, te ranu mīti, te ranunga ricotta, te mozzarella\n5. Tukuruatia ngā paparanga kia 2-3 ngā wā\n6. Uhia te runga ki te tīhi, ka tunu ai i te 190°C mō te 25 meneti\nKei te hiahia koe ki ētahi atu taipitopito mō tētahi o ēnei mahi?"
     },
     {
         "role": "user",
-        "content": "Bai, mesedez, kontatu gehiago haragi-saltsari buruz"
+        "content": "Āe, tēnā koa, whakamāramatia mai ētahi atu kōrero mō te ranu mīti"
     },
     {
         "role": "assistant",
-        "content": "Hona hemen haragi-saltsa egiteko modua:\n1. Zuritu 500g haragi txikitua zartagin handi batean\n2. Gehitu tipula eta baratxuria txikituta, eta bigundu arte kozinatu\n3. Gehitu tomate txikitu lata bi\n4. Ondorengo hauek gehitu:\n   - Italiar belarrak\n   - Gatza eta piperra\n   - Ereinotz hosto bat\n5. 30 minutuz egosten utzi\nSaltsak lodia izan behar du baina ez lehorra. Beharrezkoa bada, ura gehitu."
+        "content": "Anei te tikanga mō te mahi i te ranu mīti:\n1. Whakaparauritia te 500g mīti kau kōhukihuki ki tētahi parai nui\n2. Tāpirihia te aniana me te kārika kua tapatapahia, ka tunu ai kia ngohengohe rā anō\n3. Tāpirihia kia 2 ngā tini tōmato kua kurua\n4. Whakakakaratia ki ēnei:\n   - ngā otaota kakara Itāriana\n   - te tote me te pepa\n   - 1 rau bay\n5. Kia koropupū marie mō te 30 meneti\nMe mātotoru te ranu, engari kaua e maroke. Tāpirihia he wai ki te hiahiatia."
     }
 ]
 ```
@@ -64,140 +64,21 @@ English instruction data:
     },
     {
         "role": "assistant",
-        "content": "**Gray Code Generation and Finding the Strongest** ===================================================== A Gray code is an ordering of the binary numeral system such that two successive values differ in only one bit (binary digit). Here's a Python code snippet that generates all possible Gray codes for a given number of bits and finds the \\\"strongest\\\" one, which we'll define as the one with the most consecutive 1s. ```python def generate_gray_code(n): \\\"\\\"\\\" Generate all possible Gray codes for n bits. Args: n (int): The number of bits. Returns: list: A list of all possible Gray codes. \\\"\\\"\\\" if n <= 0: return [''] # Recursive case: get all Gray codes for n-1 bits gray_codes = generate_gray_code(n - 1) # Mirror the list and add a '0' or '1' prefix to each code mirrored_codes = gray_codes + gray_codes[::-1] gray_codes = ['0' + code for code in gray_codes] + ['1' + code for code in mirrored_codes[len(gray_codes):]] return gray_codes def find_strongest_gray_code(gray_codes): \\\"\\\"\\\" Find the strongest Gray code, i.e., the one with the most consecutive 1s. Args: gray_codes (list): A list of Gray codes. Returns: str: The strongest Gray code. \\\"\\\"\\\" max_consecutive_ones = 0 strongest_code = '' for code in gray_codes: consecutive_ones = 0 max_local_consecutive_ones = 0 for bit in code: if bit == '1': consecutive_ones += 1 max_local_consecutive_ones = max(max_local_consecutive_ones, consecutive_ones) else: consecutive_ones = 0 if max_local_consecutive_ones > max_consecutive_ones: max_consecutive_ones = max_local_consecutive_ones strongest_code = code return strongest_code # Example usage n = 4 # Number of bits gray_codes = generate_gray_code(n) strongest_code = find_strongest_gray_code(gray_codes) print(f\\\"All possible Gray codes for {n} bits:\\\") for code in gray_codes: print(code) print(f\\\"\\nThe strongest Gray code is: {strongest_code}\\\") ``` This code defines two functions: * `generate_gray_code(n)`: Generates all possible Gray codes for `n` bits using recursion. * `find_strongest_gray_code(gray_codes)`: Finds the strongest Gray code by iterating through the list of codes and keeping track of the maximum consecutive ones. The example usage demonstrates how to use these functions to generate all possible Gray codes for 4 bits and find the strongest one."
+        "content": "**Gray Code Generation and Finding the Strongest**\n\nA Gray code is an ordering of the binary numeral system such that two successive values differ in only one bit (binary digit). Here's a Python code snippet that generates all possible Gray codes for a given number of bits and finds the \"strongest\" one, which we'll define as the one with the most consecutive 1s.\n\n```python\ndef generate_gray_code(n):\n    \"\"\"\n    Generate all possible Gray codes for n bits.\n\n    Args:\n        n (int): The number of bits.\n\n    Returns:\n        list: A list of all possible Gray codes.\n    \"\"\"\n    if n <= 0:\n        return ['']\n    # Recursive case: get all Gray codes for n-1 bits\n    gray_codes = generate_gray_code(n - 1)\n    # Mirror the list and add a '0' or '1' prefix to each code\n    mirrored_codes = gray_codes + gray_codes[::-1]\n    gray_codes = ['0' + code for code in gray_codes] + ['1' + code for code in mirrored_codes[len(gray_codes):]]\n    return gray_codes\n\ndef find_strongest_gray_code(gray_codes):\n    \"\"\"\n    Find the strongest Gray code, i.e., the one with the most consecutive 1s.\n\n    Args:\n        gray_codes (list): A list of Gray codes.\n\n    Returns:\n        str: The strongest Gray code.\n    \"\"\"\n    max_consecutive_ones = 0\n    strongest_code = ''\n    for code in gray_codes:\n        consecutive_ones = 0\n        max_local_consecutive_ones = 0\n        for bit in code:\n            if bit == '1':\n                consecutive_ones += 1\n                max_local_consecutive_ones = max(max_local_consecutive_ones, consecutive_ones)\n            else:\n                consecutive_ones = 0\n        if max_local_consecutive_ones > max_consecutive_ones:\n            max_consecutive_ones = max_local_consecutive_ones\n            strongest_code = code\n    return strongest_code\n\n# Example usage\nn = 4  # Number of bits\ngray_codes = generate_gray_code(n)\nstrongest_code = find_strongest_gray_code(gray_codes)\nprint(f\"All possible Gray codes for {n} bits:\")\nfor code in gray_codes:\n    print(code)\nprint(f\"\\nThe strongest Gray code is: {strongest_code}\")\n```\n\nThis code defines two functions:\n* `generate_gray_code(n)`: Generates all possible Gray codes for `n` bits using recursion.\n* `find_strongest_gray_code(gray_codes)`: Finds the strongest Gray code by iterating through the list of codes and keeping track of the maximum consecutive ones.\n\nThe example usage demonstrates how to use these functions to generate all possible Gray codes for 4 bits and find the strongest one."
     }
 ]
 ```
 
-Basque translation:
+Māori translation:
 ```json
 [
     {
         "role": "user",
-        "content": "Idatzi kode bat Python-en gray kode indartsuena aurkitzeko."
+        "content": "Tuhia he waehere ki te reo Python hei kimi i te gray code kaha rawa atu."
     },
     {
         "role": "assistant",
-        "content": "**Gray Kodea Sortu eta Indartsuena Aurkitu** ===================================================== Gray kodea sistema binarioaren ordenazio bat da non bi balio jarraik bit bakar batean (digitu binario) desberdintzen diren. Hona hemen Python kode zati bat bit kopuru jakin baterako Gray kode posible guztiak sortu eta \"indartsuena\" aurkitzen duena, jarraian dauden 1 gehien dituena definituko duguna. ```python def generate_gray_code(n): \"\"\" n bitentzako Gray kode posible guztiak sortu. Args: n (int): Bit kopurua. Returns: list: Gray kode posible guztien zerrenda. \"\"\" if n <= 0: return [''] # Kasu errekurtsiboa: lortu n-1 bitentzako Gray kode guztiak gray_codes = generate_gray_code(n - 1) # Zerrenda ispilatu eta '0' edo '1' aurrizkia gehitu kode bakoitzari mirrored_codes = gray_codes + gray_codes[::-1] gray_codes = ['0' + code for code in gray_codes] + ['1' + code for code in mirrored_codes[len(gray_codes):]] return gray_codes def find_strongest_gray_code(gray_codes): \"\"\" Gray kode indartsuena aurkitu, hau da, jarraian 1 gehien dituena. Args: gray_codes (list): Gray kodeen zerrenda bat. Returns: str: Gray kode indartsuena. \"\"\" max_consecutive_ones = 0 strongest_code = '' for code in gray_codes: consecutive_ones = 0 max_local_consecutive_ones = 0 for bit in code: if bit == '1': consecutive_ones += 1 max_local_consecutive_ones = max(max_local_consecutive_ones, consecutive_ones) else: consecutive_ones = 0 if max_local_consecutive_ones > max_consecutive_ones: max_consecutive_ones = max_local_consecutive_ones strongest_code = code return strongest_code # Erabilera adibidea n = 4 # Bit kopurua gray_codes = generate_gray_code(n) strongest_code = find_strongest_gray_code(gray_codes) print(f\"{n} bitentzako Gray kode posible guztiak:\") for code in gray_codes: print(code) print(f\"\nGray kode indartsuena hau da: {strongest_code}\") ``` Kode honek bi funtzio definitzen ditu: * `generate_gray_code(n)`: `n` bitentzako Gray kode posible guztiak sortzen ditu errekurtsioa erabiliz. * `find_strongest_gray_code(gray_codes)`: Gray kode indartsuena aurkitzen du kodeen zerrenda zeharkatuz eta jarraian dauden bat gehienen jarraipena eginez. Erabilera adibideak erakusten du nola erabili funtzio hauek 4 bitentzako Gray kode posible guztiak sortzeko eta indartsuena aurkitzeko."
-    }
-]
-```
-=========================================
-
-English instruction data:
-```json
-[
-    {
-        "role": "user",
-        "content": "What's the best way to learn to play guitar?"
-    },
-    {
-        "role": "assistant",
-        "content": "Here's a step-by-step guide to learning guitar:\n1. Start with a beginner acoustic guitar\n2. Learn basic chords (A, D, G, Em)\n3. Practice chord transitions daily\n4. Learn proper finger placement\n5. Start with simple songs\n6. Practice at least 15 minutes daily\nWould you like specific beginner song recommendations?"
-    },
-    {
-        "role": "user",
-        "content": "What are some easy songs to start with?"
-    },
-    {
-        "role": "assistant",
-        "content": "Here are some great beginner songs:\n1. 'Horse With No Name' (Am, Em)\n2. 'Let It Be' (C, G, Am, F)\n3. 'Wonderwall' (Em, G, D, A)\n4. 'Hey There Delilah' (D, F#m, Bm)\nThese songs use basic chords and have simple strumming patterns."
-    }
-]
-```
-
-Basque translation:
-```json
-[
-    {
-        "role": "user",
-        "content": "Zein da gitarra jotzen ikasteko modurik onena?"
-    },
-    {
-        "role": "assistant",
-        "content": "Hona hemen gitarra ikasteko pausoz pausoko gida:\n1. Hasi hasiberrientzako gitarra akustiko batekin\n2. Ikasi oinarrizko akordeak (A, D, G, Em)\n3. Praktikatu akorde-trantsizioak egunero\n4. Ikasi hatz-kokapen egokia\n5. Hasi abesti sinpleekin\n6. Praktikatu gutxienez 15 minutu egunero\nHasiberrientzako abesti gomendioak nahi dituzu?"
-    },
-    {
-        "role": "user",
-        "content": "Zein dira hasteko abesti errazak?"
-    },
-    {
-        "role": "assistant",
-        "content": "Hona hemen hasiberrientzako abesti onak:\n1. 'Horse With No Name' (Am, Em)\n2. 'Let It Be' (C, G, Am, F)\n3. 'Wonderwall' (Em, G, D, A)\n4. 'Hey There Delilah' (D, F#m, Bm)\nAbesti hauek oinarrizko akordeak dituzte eta kolpe-patroi sinpleak."
-    }
-]
-```
-=========================================
-
-English instruction data:
-```json
-[
-    {
-        "role": "user",
-        "content": "Given that the circle below has a center at the origin (0,0) and has a radius of 3 units, what is the equation of the circle?"
-    },
-    {
-        "role": "assistant",
-        "content": "The equation of a circle with center (h,k) and radius r is:\n(x - h)^2 + (y - k)^2 = r^2\nFor this circle with center (0,0) and radius 3, the equation is:\nx^2 + y^2 = 3^2\nTherefore, the equation of the circle is x^2 + y^2 = 9."
-    }
-]
-```
-
-Basque translation:
-```json
-[
-    {
-        "role": "user",
-        "content": "Beheko zirkuluak jatorria duen eremua (0,0) erdian duela eta erradioa 3 unitatekoa denean, zirkuluaren ekuazioa zer da?"
-    },
-    {
-        "role": "assistant",
-        "content": "Zirkulu baten ekuazioa (h,k) erdian eta erradioa r dena honakoa da:\\n(x - h)^2 + (y - k)^2 = r^2\\nZirkulu honentzat (0,0) erdian eta erradioa 3 denean, ekuazioa honakoa da:\\nx^2 + y^2 = 3^2\\nBeraz, zirkuluaren ekuazioa x^2 + y^2 = 9 da."
-    }
-]
-```
-=========================================
-
-English instruction data:
-```json
-[
-    {
-        "role": "user",
-        "content": "How can I take better photos with my smartphone?"
-    },
-    {
-        "role": "assistant",
-        "content": "Here are key tips for better smartphone photography:\n1. Clean your camera lens\n2. Use the rule of thirds\n3. Tap to focus on your subject\n4. Avoid digital zoom\n5. Find good lighting\n6. Hold the phone steady\nWould you like more details about composition?"
-    },
-    {
-        "role": "user",
-        "content": "Yes, tell me more about the rule of thirds"
-    },
-    {
-        "role": "assistant",
-        "content": "The rule of thirds works like this:\n1. Imagine your screen divided into 9 equal boxes\n2. Place important elements along the lines\n3. Put main subjects at the intersection points\n4. Keep horizon on top or bottom third\n5. Most phones have a grid overlay option\nThis creates more dynamic and interesting photos than centering everything."
-    }
-]
-```
-
-Basque translation:
-```json
-[
-    {
-        "role": "user",
-        "content": "Nola atera ditzaket argazki hobeak nire smartphonearekin?"
-    },
-    {
-        "role": "assistant",
-        "content": "Hona hemen smartphone argazkilaritzarako aholku garrantzitsuak:\n1. Garbitu kameraren objektiboa\n2. Erabili herenen erregela\n3. Sakatu fokuratzeko zure subjektuan\n4. Saihestu zoom digitala\n5. Bilatu argi ona\n6. Eutsi telefonoari geldi\nXehetasun gehiago nahi dituzu konposizioari buruz?"
-    },
-    {
-        "role": "user",
-        "content": "Bai, kontatu gehiago herenen erregelari buruz"
-    },
-    {
-        "role": "assistant",
-        "content": "Herenen erregelak honela funtzionatzen du:\n1. Imajinatu zure pantaila 9 kaxa berdinetan banatuta\n2. Jarri elementu garrantzitsuak lerroen gainean\n3. Kokatu subjektu nagusiak gurutzagunetan\n4. Mantendu horizontea goiko edo beheko herenean\n5. Telefono gehienek dute sareta erakusteko aukera\nHonek argazki dinamiko eta interesgarriagoak sortzen ditu dena erdian jartzearekin konparatuta."
+        "content": "**Te Whakaputa Gray Code me te Kimi i te Mea Kaha Rawa Atu**\n\nKo te Gray code he raupapatanga o te pūnaha tau ā-rua, ā, he rerekē ngā uara raupapa e rua i te moka kotahi anake (te mati ā-rua). Anei tētahi kōwae waehere Python e whakaputa ana i ngā Gray code katoa e taea ana mō tētahi tau moka i tohua, ā, e kimi ana i te mea \"kaha rawa atu\", arā, ka tautuhia e tātou hei te mea e nui rawa ana ngā 1 raupapa.\n\n```python\ndef generate_gray_code(n):\n    \"\"\"\n    Generate all possible Gray codes for n bits.\n\n    Args:\n        n (int): The number of bits.\n\n    Returns:\n        list: A list of all possible Gray codes.\n    \"\"\"\n    if n <= 0:\n        return ['']\n    # Recursive case: get all Gray codes for n-1 bits\n    gray_codes = generate_gray_code(n - 1)\n    # Mirror the list and add a '0' or '1' prefix to each code\n    mirrored_codes = gray_codes + gray_codes[::-1]\n    gray_codes = ['0' + code for code in gray_codes] + ['1' + code for code in mirrored_codes[len(gray_codes):]]\n    return gray_codes\n\ndef find_strongest_gray_code(gray_codes):\n    \"\"\"\n    Find the strongest Gray code, i.e., the one with the most consecutive 1s.\n\n    Args:\n        gray_codes (list): A list of Gray codes.\n\n    Returns:\n        str: The strongest Gray code.\n    \"\"\"\n    max_consecutive_ones = 0\n    strongest_code = ''\n    for code in gray_codes:\n        consecutive_ones = 0\n        max_local_consecutive_ones = 0\n        for bit in code:\n            if bit == '1':\n                consecutive_ones += 1\n                max_local_consecutive_ones = max(max_local_consecutive_ones, consecutive_ones)\n            else:\n                consecutive_ones = 0\n        if max_local_consecutive_ones > max_consecutive_ones:\n            max_consecutive_ones = max_local_consecutive_ones\n            strongest_code = code\n    return strongest_code\n\n# Example usage\nn = 4  # Number of bits\ngray_codes = generate_gray_code(n)\nstrongest_code = find_strongest_gray_code(gray_codes)\nprint(f\"All possible Gray codes for {n} bits:\")\nfor code in gray_codes:\n    print(code)\nprint(f\"\\nThe strongest Gray code is: {strongest_code}\")\n```\n\nE tautuhi ana tēnei waehere i ngā taumahi e rua:\n* `generate_gray_code(n)`: Ka whakaputa i ngā Gray code katoa e taea ana mō ngā moka `n` mā te recursion.\n* `find_strongest_gray_code(gray_codes)`: Ka kimi i te Gray code kaha rawa atu mā te tirotiro i ia waehere o te rārangi me te pupuri i te tatau nui rawa o ngā 1 raupapa.\n\nE whakaatu ana te tauira whakamahi me pēhea te whakamahi i ēnei taumahi hei whakaputa i ngā Gray code katoa e taea ana mō ngā moka 4, ā, hei kimi i te mea kaha rawa atu."
     }
 ]
 ```
@@ -212,21 +93,21 @@ English instruction data:
     },
     {
         "role": "assistant",
-        "content": "Here's the translation of the given text from English to Spanish: \"Se espera mal tiempo durante todo el día, con una alta probabilidad de tormentas y lluvias intensas. Los fuertes vientos pronosticados harán que las actividades al aire libre sean incincómodas. Evite viajar a menos que sea absolutamente necesario.\" Here's a breakdown of the translation: - \"Bad weather expected for the whole day\" becomes \"Se espera mal tiempo durante todo el día.\" - \"with a high chance of thunderstorms and heavy rain\" becomes \"con una alta probabilidad de tormentas y lluvias intensas.\" - \"The strong winds that are forecast\" becomes \"Los fuertes vientos pronosticados.\" - \"will make outdoor activities uncomfortable\" becomes \"harían que las actividades al aire libre sean incómodas.\" - \"Avoid traveling unless absolutely necessary\" becomes \"Evite viajar a menos que sea absolutamente necesario.\""
+        "content": "Here's the translation of the given text from English to Spanish: \"Se espera mal tiempo durante todo el día, con una alta probabilidad de tormentas y lluvias intensas. Los fuertes vientos pronosticados harán que las actividades al aire libre sean incómodas. Evite viajar a menos que sea absolutamente necesario.\"\n\nHere's a breakdown of the translation:\n- \"Bad weather expected for the whole day\" becomes \"Se espera mal tiempo durante todo el día.\"\n- \"with a high chance of thunderstorms and heavy rain\" becomes \"con una alta probabilidad de tormentas y lluvias intensas.\"\n- \"The strong winds that are forecast\" becomes \"Los fuertes vientos pronosticados.\"\n- \"will make outdoor activities uncomfortable\" becomes \"harán que las actividades al aire libre sean incómodas.\"\n- \"Avoid traveling unless absolutely necessary\" becomes \"Evite viajar a menos que sea absolutamente necesario.\""
     }
 ]
 ```
 
-Basque translation:
+Māori translation:
 ```json
 [
     {
         "role": "user",
-        "content": "Ondorengo testua ingelesetik gaztelaniara itzuli behar dut: \"Bad weather expected for the whole day, with a high chance of thunderstorms and heavy rain. The strong winds that are forecast will make outdoor activities uncomfortable. Avoid traveling unless absolutely necessary.\" Itzuli dezakezu testu hau?"
+        "content": "Me whakawhiti e au te tuhinga e whai ake nei mai i te reo Ingarihi ki te reo Pāniora: \"Bad weather expected for the whole day, with a high chance of thunderstorms and heavy rain. The strong winds that are forecast will make outdoor activities uncomfortable. Avoid traveling unless absolutely necessary.\" Ka taea e koe te whakawhiti i tēnei tuhinga?"
     },
     {
         "role": "assistant",
-        "content": "Hona hemen emandako testuaren itzulpena ingelesetik gaztelaniara: \"Se espera mal tiempo durante todo el día, con una alta probabilidad de tormentas y lluvias intensas. Los fuertes vientos pronosticados harán que las actividades al aire libre sean incincómodas. Evite viajar a menos que sea absolutamente necesario.\" Hona hemen itzulpenaren xehetasunak: - \"Bad weather expected for the whole day\" \"Se espera mal tiempo durante todo el día\" bihurtzen da. - \"with a high chance of thunderstorms and heavy rain\" \"con una alta probabilidad de tormentas y lluvias intensas\" bihurtzen da. - \"The strong winds that are forecast\" \"Los fuertes vientos pronosticados\" bihurtzen da. - \"will make outdoor activities uncomfortable\" \"harían que las actividades al aire libre sean incómodas\" bihurtzen da. - \"Avoid traveling unless absolutely necessary\" \"Evite viajar a menos que sea absolutamente necesario\" bihurtzen da."
+        "content": "Anei te whakawhitinga o te tuhinga i hoatu mai, mai i te reo Ingarihi ki te reo Pāniora: \"Se espera mal tiempo durante todo el día, con una alta probabilidad de tormentas y lluvias intensas. Los fuertes vientos pronosticados harán que las actividades al aire libre sean incómodas. Evite viajar a menos que sea absolutamente necesario.\"\n\nAnei te wetewetenga o te whakawhitinga:\n- Ka huri te \"Bad weather expected for the whole day\" hei \"Se espera mal tiempo durante todo el día.\"\n- Ka huri te \"with a high chance of thunderstorms and heavy rain\" hei \"con una alta probabilidad de tormentas y lluvias intensas.\"\n- Ka huri te \"The strong winds that are forecast\" hei \"Los fuertes vientos pronosticados.\"\n- Ka huri te \"will make outdoor activities uncomfortable\" hei \"harán que las actividades al aire libre sean incómodas.\"\n- Ka huri te \"Avoid traveling unless absolutely necessary\" hei \"Evite viajar a menos que sea absolutamente necesario.\""
     }
 ]
 ```
@@ -237,5 +118,5 @@ English instruction data:
 {{ english_conversation }}
 ```
 
-Basque translation:
+Māori translation:
 ```json

@@ -1,3 +1,4 @@
 # Python 
 __pycache__/
 *.pyc
+magpie/maori_prompt_utils/*
